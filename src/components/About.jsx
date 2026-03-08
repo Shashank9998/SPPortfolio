@@ -376,6 +376,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Music, Plane, Film, Trophy } from 'lucide-react';
+import Img from '../assets/ShashankkumarPatel.png';
 
 const About = () => {
   const details = [
@@ -414,7 +415,7 @@ const About = () => {
               
               {/* Actual Image */}
               <img 
-                src="/your-photo.jpg" 
+                src={Img} 
                 alt="Shashank Patel" 
                 className="relative z-10 w-full h-auto grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-in-out border border-gray-100"
               />

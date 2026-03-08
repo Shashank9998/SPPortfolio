@@ -85,6 +85,7 @@ import CustomCursor from './components/CustomCursor';
 // import Background3D from './components/Background3D';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
+import SmoothScroll from './components/SmoothScroll';
 // import { Contact } from 'lucide-react';
 
 // Home Page Sections (Lazy Loaded for Speed)
@@ -127,7 +128,8 @@ function App() {
       {/* Selection color and Dark Background */}
       {/* <div className="relative bg-[#030712] text-white selection:bg-blue-500/30 overflow-x-hidden min-h-screen"> */}
       <div>
-        
+        <SmoothScroll>
+
         {/* Persistent UI elements */}
         <CustomCursor />
         
@@ -152,6 +154,7 @@ function App() {
           </Routes>
         </main>
         <ScrollToTop />
+        </SmoothScroll>
       </div>
     </Router>
   );
