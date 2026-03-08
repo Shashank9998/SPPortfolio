@@ -82,7 +82,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // UI Components (Direct Imports)
 import Navbar from './components/Navbar';
 import CustomCursor from './components/CustomCursor';
-import Background3D from './components/Background3D';
+// import Background3D from './components/Background3D';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
 // import { Contact } from 'lucide-react';
@@ -125,7 +125,8 @@ function App() {
   return (
     <Router>
       {/* Selection color and Dark Background */}
-      <div className="relative bg-[#030712] text-white selection:bg-blue-500/30 overflow-x-hidden min-h-screen">
+      {/* <div className="relative bg-[#030712] text-white selection:bg-blue-500/30 overflow-x-hidden min-h-screen"> */}
+      <div>
         
         {/* Persistent UI elements */}
         <CustomCursor />
@@ -133,7 +134,7 @@ function App() {
         {/* Background Layer */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Suspense fallback={<div className="bg-[#030712] h-screen w-full" />}>
-            <Background3D />
+            {/* <Background3D /> */}
           </Suspense>
         </div>
 
