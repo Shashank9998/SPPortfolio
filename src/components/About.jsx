@@ -380,7 +380,7 @@ import { Music, Plane, Film, Trophy } from 'lucide-react';
 const About = () => {
   const details = [
     { label: "Name:", value: "Shashank Patel" },
-    { label: "Date of birth:", value: "April 29, 2000" },
+    // { label: "Date of birth:", value: "April 29, 2000" },
     { label: "Address:", value: "Ahmedabad, Gujarat, India" },
     { label: "Zip code:", value: "382330" },
     { label: "Email:", value: "shashankpatel9998@gmail.com" },
