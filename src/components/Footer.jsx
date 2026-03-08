@@ -199,16 +199,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, Twitter, Instagram, Linkedin, Heart, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Github, Linkedin, Heart, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: <Facebook size={18} />, url: "#" },
-    { icon: <Twitter size={18} />, url: "#" },
-    { icon: <Instagram size={18} />, url: "#" },
-    { icon: <Linkedin size={18} />, url: "#" },
+    // { icon: <Facebook size={18} />, url: "#" },
+    // { icon: <Twitter size={18} />, url: "#" },
+    { icon: <Github size={18} />, url: "https://github.com/Shashank9998/" },
+    { icon: <Linkedin size={18} />, url: "https://www.linkedin.com/in/shashankkumar-patel-63a333245/" },
   ];
 
   const navLinks = [

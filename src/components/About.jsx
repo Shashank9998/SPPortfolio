@@ -380,7 +380,7 @@ import Img from '../assets/ShashankkumarPatel.png';
 
 const About = () => {
   const details = [
-    { label: "Name:", value: "Shashank Patel" },
+    { label: "Name:", value: "Shashankkumar Patel" },
     // { label: "Date of birth:", value: "April 29, 2000" },
     { label: "Address:", value: "Ahmedabad, Gujarat, India" },
     { label: "Zip code:", value: "382330" },
@@ -440,7 +440,8 @@ const About = () => {
             </h2>
             
             <p className="text-gray-400 leading-relaxed text-[16px] mb-10">
-              "My creative work thrives within the vibrant atmosphere of Ahmedabad—a city where history meets modernity on the banks of the Sabarmati. Just as the lanes of Manek Chowk offer a diverse palette of flavors, my coding reflects a precise blend of cutting-edge technology and intuitive design."
+              "I am a passionate Full Stack Web Developer who enjoys building modern, responsive, and user-friendly web applications. I specialize in creating seamless experiences by combining clean front-end design with efficient back-end functionality. My goal is to transform ideas into practical digital solutions using modern web technologies. I continuously learn and explore new tools to improve performance, scalability, and user experience in every project I build."
+
             </p>
 
             {/* Vertical Details (Line by Line) */}
