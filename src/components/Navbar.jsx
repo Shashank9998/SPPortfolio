@@ -435,9 +435,9 @@ const Navbar = () => {
 
                     <span className="text-black uppercase">
                         Shashank
-                    </span>&nbsp;
+                    </span>
 
-
+                    {/* &nbsp; */}
 
                     <span className="text-[#82905b] font-black">
                         Patel
