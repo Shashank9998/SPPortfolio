@@ -34,7 +34,7 @@
 //                 </motion.div>
 
 //                 {/* Right Side: Image Placeholder */}
-                
+
 //                 <motion.div
 //                     initial={{ opacity: 0, x: 50 }}
 //                     animate={{ opacity: 1, x: 0 }}
@@ -117,7 +117,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-        
+
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -134,7 +134,7 @@ const Hero = () => {
             Developer & Designer
           </h1>
 
-          <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+          {/* <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <button className="bg-[#82905b] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#6d794a] transition-all">
               Hire me
             </button>
@@ -142,6 +142,36 @@ const Hero = () => {
             <button className="border-2 border-[#82905b] text-[#82905b] px-8 py-3 rounded-full font-bold hover:bg-[#82905b] hover:text-white transition-all">
               Download CV
             </button>
+          </div> */}
+          <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+            {/* Hire Me Link */}
+            {/* <a
+              // href="mailto:shashankkumarpatel9977@gmail.com"
+              href="#contact"
+              className="bg-[#82905b] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#6d794a] transition-all text-center"
+            >
+              Hire me
+            </a> */}
+            <button
+              onClick={() => {
+                const contact = document.getElementById('contact');
+                if (contact) {
+                  contact.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="bg-[#82905b] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#6d794a] transition-all text-center cursor-pointer"
+            >
+              Hire me
+            </button>
+
+            {/* Download CV Link */}
+            <a
+              href="/path-to-your-cv.pdf"
+              download="My_CV.pdf"
+              className="border-2 border-[#82905b] text-[#82905b] px-8 py-3 rounded-full font-bold hover:bg-[#82905b] hover:text-white transition-all text-center"
+            >
+              Download CV
+            </a>
           </div>
         </motion.div>
 
@@ -161,7 +191,7 @@ const Hero = () => {
 
           {/* Image Wrapper */}
           <div className="relative z-10 w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] group">
-            
+
             {/* Glow */}
             <div className="absolute inset-0 bg-[#a4ac86]/5 blur-[80px] -z-10 rounded-full" />
 

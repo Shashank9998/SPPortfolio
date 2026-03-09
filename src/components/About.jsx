@@ -221,7 +221,7 @@
 //     <section id="about" className="py-24 bg-white">
 //       <div className="container mx-auto px-6 max-w-6xl">
 //         <div className="flex flex-col md:flex-row items-start gap-12">
-          
+
 //           {/* Left Side: Image */}
 //           <div className="w-full md:w-5/12">
 //             <img 
@@ -239,7 +239,7 @@
 //             <h2 className="text-5xl font-bold text-[#333333] mb-8 tracking-tight">
 //               About Me
 //             </h2>
-            
+
 //             <p className="text-gray-400 leading-relaxed text-[16px] mb-10">
 //               "My creative work thrives within the vibrant atmosphere of Ahmedabad—a city where history meets modernity on the banks of the Sabarmati. Just as the lanes of Manek Chowk offer a diverse palette of flavors, my coding reflects a precise blend of cutting-edge technology and intuitive design. Rooted in the soul of this Heritage City while embracing futuristic tech, I build world-class web applications that bridge tradition and innovation."
 //             </p>
@@ -266,7 +266,7 @@
 //                   {index !== 0 && (
 //                     <div className="absolute left-[-20px] h-10 w-[1px] bg-gray-200" />
 //                   )}
-                  
+
 //                   <div className="w-10 h-10 rounded-full bg-[#f4f5f0] flex items-center justify-center text-[#82905b]">
 //                     {hobby.icon}
 //                   </div>
@@ -312,7 +312,7 @@
 //     <section id="about" className="py-24 bg-white">
 //       <div className="container mx-auto px-6 max-w-6xl">
 //         <div className="flex flex-col md:flex-row items-start gap-12">
-          
+
 //           {/* Left Side: Image */}
 //           <div className="w-full md:w-5/12">
 //             <img 
@@ -330,7 +330,7 @@
 //             <h2 className="text-5xl font-bold text-[#333333] mb-8 tracking-tight">
 //               About Me
 //             </h2>
-            
+
 //             <p className="text-gray-400 leading-relaxed text-[16px] mb-10">
 //               "My creative work thrives within the vibrant atmosphere of Ahmedabad—a city where history meets modernity on the banks of the Sabarmati. Just as the lanes of Manek Chowk offer a diverse palette of flavors, my coding reflects a precise blend of cutting-edge technology and intuitive design."
 //             </p>
@@ -384,7 +384,7 @@ const About = () => {
     // { label: "Date of birth:", value: "April 29, 2000" },
     { label: "Address:", value: "Ahmedabad, Gujarat, India" },
     { label: "Zip code:", value: "382330" },
-    { label: "Email:", value: "shashankpatel9998@gmail.com" },
+    { label: "Email:", value: "shashankkumarpatel9977@gmail.com" },
     { label: "Phone:", value: "+91-9328649313" },
   ];
 
@@ -399,34 +399,49 @@ const About = () => {
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row items-start gap-12">
-          
+
           {/* Left Side: Image with Hover Effect */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="w-full md:w-5/12"
           >
-            {/* Image Wrapper */}
             <div className="relative group overflow-hidden rounded-sm cursor-pointer shadow-sm">
               
-              {/* Decorative Subtle Line Divider */}
               <div className="absolute top-0 left-0 w-2 h-full bg-[#f4f5f0] z-0 group-hover:scale-y-110 transition-transform duration-500" />
               
-              {/* Actual Image */}
               <img 
                 src={Img} 
                 alt="Shashank Patel" 
                 className="relative z-10 w-full h-auto grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-in-out border border-gray-100"
               />
               
-              {/* Transparent Overlay on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#82905b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+            </div>
+          </motion.div> */}
+
+          {/* Left Side: Image with Hover Effect - Mobile ma hidden thase */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="hidden md:block w-full md:w-5/12" // 'hidden' mobile mate ane 'md:block' desktop mate
+          >
+            {/* Image Wrapper */}
+            <div className="relative group overflow-hidden rounded-sm cursor-pointer shadow-sm">
+              <div className="absolute top-0 left-0 w-2 h-full bg-[#f4f5f0] z-0 group-hover:scale-y-110 transition-transform duration-500" />
+              <img
+                src={Img}
+                alt="Shashank Patel"
+                className="relative z-10 w-full h-auto grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-in-out border border-gray-100"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#82905b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
             </div>
           </motion.div>
 
           {/* Right Side: Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -438,7 +453,7 @@ const About = () => {
             <h2 className="text-5xl font-bold text-[#333333] mb-8 tracking-tight">
               About Me
             </h2>
-            
+
             <p className="text-gray-400 leading-relaxed text-[16px] mb-10">
               "I am a passionate Full Stack Web Developer who enjoys building modern, responsive, and user-friendly web applications. I specialize in creating seamless experiences by combining clean front-end design with efficient back-end functionality. My goal is to transform ideas into practical digital solutions using modern web technologies. I continuously learn and explore new tools to improve performance, scalability, and user experience in every project I build."
 
@@ -461,8 +476,8 @@ const About = () => {
             {/* Interests Section */}
             <div className="flex flex-wrap items-center gap-x-10 gap-y-6 pt-6 border-t border-gray-100">
               {interests.map((hobby, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="flex items-center gap-3 group"
                   whileHover={{ scale: 1.05 }} // Minor subtle effect on the hobby section
                 >
