@@ -98,6 +98,12 @@ const Projects = () => {
             image: "https://images.pexels.com/photos/5650016/pexels-photo-5650016.jpeg",
             link: "https://patel-glasswork.vercel.app/",
         },
+        {
+            title: "Recipe Finder",
+            category: "API Integration",
+            image: "https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg",
+            link: "https://recipe-nu-eight.vercel.app/",
+        }
     ];
 
     return (
