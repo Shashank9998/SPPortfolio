@@ -96,7 +96,7 @@ const Projects = () => {
             title: "UrbanCart",
             category: "E-commerce",
             image: "https://images.pexels.com/photos/5650016/pexels-photo-5650016.jpeg",
-            link: "https://patel-glasswork.vercel.app/",
+            link: "https://urban-cart-h5mz.vercel.app/",
         },
         {
             title: "Recipe Finder",
