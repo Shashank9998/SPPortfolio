@@ -75,16 +75,23 @@ const Projects = () => {
         //     image: "/blog-project.jpg",
         // },
         {
+            title: "Finance Tracker",
+            category: "Personal Finance Management App",
+            image: "https://images.pexels.com/photos/732444/pexels-photo-732444.jpeg",
+            link: "https://finance-tawny-ten.vercel.app/",
+        },
+        {
             title: "M-Watch App",
             category: "API Integration",
             image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg",
             link: "https://m-watch.vercel.app/",
         },
-        // {
-        //     title: "Construction Site",
-        //     category: "UI/UX Design",
-        //     image: "/construction-project.jpg",
-        // },
+        {
+            title: "Quiz App",
+            category: "React Application",
+            image: "https://images.pexels.com/photos/207924/pexels-photo-207924.jpeg",
+            link: "https://quiz-virid-two.vercel.app/",
+        },
         {
             title: "UrbanCart",
             category: "E-commerce",
