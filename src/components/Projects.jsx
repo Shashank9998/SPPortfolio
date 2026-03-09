@@ -80,12 +80,12 @@ const Projects = () => {
             image: "https://images.pexels.com/photos/732444/pexels-photo-732444.jpeg",
             link: "https://finance-tawny-ten.vercel.app/",
         },
-        {
-            title: "M-Watch App",
-            category: "API Integration",
-            image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg",
-            link: "https://m-watch.vercel.app/",
-        },
+        // {
+        //     title: "M-Watch App",
+        //     category: "API Integration",
+        //     image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg",
+        //     link: "https://m-watch.vercel.app/",
+        // },
         {
             title: "Quiz App",
             category: "React Application",
