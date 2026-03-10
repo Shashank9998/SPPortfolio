@@ -69,23 +69,24 @@ const Projects = () => {
             image: "https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg",
             link: "https://sp-steel-iron.vercel.app/",
         },
-        // {
-        //     title: "Instagram Blog Clone",
-        //     category: "React Application",
-        //     image: "/blog-project.jpg",
-        // },
+        {
+            title: "Blog App",
+            category: "React Application",
+            image: "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg",
+            link: "https://blog-7df7.vercel.app/",
+        },
         {
             title: "Finance Tracker",
             category: "Personal Finance Management App",
             image: "https://images.pexels.com/photos/732444/pexels-photo-732444.jpeg",
             link: "https://finance-tawny-ten.vercel.app/",
         },
-        // {
-        //     title: "M-Watch App",
-        //     category: "API Integration",
-        //     image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg",
-        //     link: "https://m-watch.vercel.app/",
-        // },
+        {
+            title: "M-Watch App",
+            category: "API Integration",
+            image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg",
+            link: "https://m-watch.vercel.app/",
+        },
         {
             title: "Quiz App",
             category: "React Application",
