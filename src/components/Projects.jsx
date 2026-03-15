@@ -217,7 +217,7 @@
 //     return (
 //         <section id="projects" className="py-24 bg-[#fafafa]">
 //             <div className="container mx-auto px-6 max-w-7xl">
-                
+
 //                 {/* Header Section */}
 //                 <div className="text-center mb-12">
 //                     <motion.span 
@@ -228,7 +228,7 @@
 //                         Portfolio
 //                     </motion.span>
 //                     <h2 className="text-5xl font-black text-black mb-6 tracking-tighter">Featured Works</h2>
-                    
+
 //                     {/* Filter Tabs - Prevents long scrolling */}
 //                     <div className="flex flex-wrap justify-center gap-4 mt-8">
 //                         {categories.map((cat) => (
@@ -299,12 +299,306 @@
 // export default Projects;
 
 
-import React, { useState, useMemo } from 'react';
-import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
+// import React, { useState, useMemo } from 'react';
+// import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
+
+// const Projects = () => {
+
+//     const [filter, setFilter] = useState('All');
+//     const [displayCount, setDisplayCount] = useState(6);
+
+//     const projectData = [
+//         { title: "Patel Glass Interior", category: "3D Design", image: "https://images.pexels.com/photos/257856/pexels-photo-257856.jpeg", link: "https://patel-glasswork.vercel.app/" },
+//         { title: "SP Iron & Steel Works", category: "Industrial", image: "https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg", link: "https://sp-steel-iron.vercel.app/" },
+//         { title: "Blog App", category: "React App", image: "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg", link: "https://blog-7df7.vercel.app/" },
+//         { title: "Finance Tracker", category: "Management", image: "https://images.pexels.com/photos/732444/pexels-photo-732444.jpeg", link: "https://finance-tawny-ten.vercel.app/" },
+//         { title: "M-Watch App", category: "API", image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg", link: "https://m-watch.vercel.app/" },
+//         { title: "Quiz App", category: "React App", image: "https://images.pexels.com/photos/207924/pexels-photo-207924.jpeg", link: "https://quiz-virid-two.vercel.app/" },
+//         { title: "UrbanCart", category: "E-commerce", image: "https://images.pexels.com/photos/5650016/pexels-photo-5650016.jpeg", link: "https://urban-cart-h5mz.vercel.app/" },
+//         { title: "Recipe Finder", category: "API", image: "https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg", link: "https://recipe-nu-eight.vercel.app/" }
+//     ];
+
+//     const categories = ['All', ...new Set(projectData.map(p => p.category))];
+
+//     // Optimized filtering
+//     const filteredProjects = useMemo(() => {
+//         return filter === 'All'
+//             ? projectData
+//             : projectData.filter(p => p.category === filter);
+//     }, [filter]);
+
+//     return (
+
+//         <LazyMotion features={domAnimation}>
+
+//         <section id="projects" className="py-24 bg-[#fafafa]">
+
+//             <div className="container mx-auto px-6 max-w-7xl">
+
+//                 {/* Header Section */}
+
+//                 <div className="text-center mb-12">
+
+//                     <m.span
+//                         initial={{ opacity: 0 }}
+//                         whileInView={{ opacity: 1 }}
+//                         className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block"
+//                     >
+//                         Portfolio
+//                     </m.span>
+
+//                     <h2 className="text-5xl font-black text-black mb-6 tracking-tighter">
+//                         Featured Works
+//                     </h2>
+
+
+//                     {/* Filter Tabs */}
+
+//                     <div className="flex flex-wrap justify-center gap-4 mt-8">
+
+//                         {categories.map((cat) => (
+
+//                             <button
+//                                 key={cat}
+//                                 onClick={() => {
+//                                     setFilter(cat);
+//                                     setDisplayCount(6);
+//                                 }}
+//                                 className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
+//                                     filter === cat
+//                                         ? 'bg-black text-white border-black'
+//                                         : 'bg-transparent text-gray-400 border-gray-200 hover:border-black hover:text-black'
+//                                 }`}
+//                             >
+//                                 {cat}
+//                             </button>
+
+//                         ))}
+
+//                     </div>
+
+//                 </div>
+
+
+//                 {/* Grid */}
+
+//                 <m.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+//                     <AnimatePresence mode="popLayout">
+
+//                         {filteredProjects.slice(0, displayCount).map((project) => (
+
+//                             <m.div
+//                                 key={project.title}
+//                                 layout
+//                                 initial={{ opacity: 0, scale: 0.9 }}
+//                                 animate={{ opacity: 1, scale: 1 }}
+//                                 exit={{ opacity: 0, scale: 0.9 }}
+//                                 transition={{ duration: 0.4 }}
+//                                 className="relative group overflow-hidden rounded-xl bg-white shadow-sm aspect-[4/3]"
+//                             >
+
+//                                 <img
+//                                     src={project.image}
+//                                     alt={project.title}
+//                                     loading="lazy"
+//                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+//                                 />
+
+//                                 <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 backdrop-blur-sm">
+
+//                                     <h3 className="text-xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform">
+//                                         {project.title}
+//                                     </h3>
+
+//                                     <p className="text-[#a4ac86] text-[10px] uppercase tracking-[3px] mb-6">
+//                                         {project.category}
+//                                     </p>
+
+//                                     <a
+//                                         href={project.link}
+//                                         target="_blank"
+//                                         rel="noopener noreferrer"
+//                                         className="px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#a4ac86] hover:text-white transition-colors"
+//                                     >
+//                                         Live Demo
+//                                     </a>
+
+//                                 </div>
+
+//                             </m.div>
+
+//                         ))}
+
+//                     </AnimatePresence>
+
+//                 </m.div>
+
+
+//                 {/* View More Button */}
+
+//                 {filteredProjects.length > displayCount && (
+
+//                     <div className="text-center mt-16">
+
+//                         <button
+//                             onClick={() => setDisplayCount(prev => prev + 3)}
+//                             className="text-black font-bold text-sm border-b-2 border-black pb-2 hover:text-[#a4ac86] hover:border-[#a4ac86] transition-all"
+//                         >
+//                             VIEW ALL PROJECTS
+//                         </button>
+
+//                     </div>
+
+//                 )}
+
+//             </div>
+
+//         </section>
+
+//         </LazyMotion>
+//     );
+// };
+
+// export default Projects;
+
+
+
+// import React, { useState } from "react";
+// import { LazyMotion, domAnimation, m } from "framer-motion";
+
+// const Projects = () => {
+
+//     const [displayCount, setDisplayCount] = useState(6);
+
+//     const projectData = [
+//         { title: "Patel Glass Interior", category: "3D Design", image: "https://images.pexels.com/photos/257856/pexels-photo-257856.jpeg", link: "https://patel-glasswork.vercel.app/" },
+//         { title: "SP Iron & Steel Works", category: "Industrial", image: "https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg", link: "https://sp-steel-iron.vercel.app/" },
+//         { title: "Blog App", category: "React App", image: "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg", link: "https://blog-7df7.vercel.app/" },
+//         { title: "Finance Tracker", category: "Management", image: "https://images.pexels.com/photos/732444/pexels-photo-732444.jpeg", link: "https://finance-tawny-ten.vercel.app/" },
+//         { title: "M-Watch App", category: "API", image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg", link: "https://m-watch.vercel.app/" },
+//         { title: "Quiz App", category: "React App", image: "https://images.pexels.com/photos/207924/pexels-photo-207924.jpeg", link: "https://quiz-virid-two.vercel.app/" },
+//         { title: "UrbanCart", category: "E-commerce", image: "https://images.pexels.com/photos/5650016/pexels-photo-5650016.jpeg", link: "https://urban-cart-h5mz.vercel.app/" },
+//         { title: "Recipe Finder", category: "API", image: "https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg", link: "https://recipe-nu-eight.vercel.app/" }
+//     ];
+
+//     return (
+
+//         <LazyMotion features={domAnimation}>
+
+//             <section id="projects" className="py-24 bg-[#fafafa]">
+
+//                 <div className="container mx-auto px-6 max-w-7xl">
+
+//                     {/* Header */}
+
+//                     <div className="text-center mb-16">
+
+//                         <m.span
+//                             initial={{ opacity: 0 }}
+//                             whileInView={{ opacity: 1 }}
+//                             transition={{ duration: 0.6 }}
+//                             className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block"
+//                         >
+//                             Portfolio
+//                         </m.span>
+
+//                         <h2 className="text-5xl font-black text-black mb-6 tracking-tighter">
+//                             Featured Works
+//                         </h2>
+//                         <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+//                             A curated collection of digital experiences crafted with a blend of modern aesthetics and functional code. Each project reflects a commitment to quality, innovation, and user-centric design.
+//                         </p>
+
+//                     </div>
+
+
+//                     {/* Grid */}
+
+//                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+//                         {projectData.slice(0, displayCount).map((project, index) => (
+
+//                             <m.div
+//                                 key={project.title}
+//                                 initial={{ opacity: 0, y: 30 }}
+//                                 whileInView={{ opacity: 1, y: 0 }}
+//                                 transition={{ duration: 0.4, delay: index * 0.05 }}
+//                                 viewport={{ once: true }}
+//                                 className="relative group overflow-hidden rounded-xl bg-white shadow-sm aspect-[4/3]"
+//                             >
+
+//                                 <img
+//                                     src={project.image}
+//                                     alt={project.title}
+//                                     loading="lazy"
+//                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+//                                 />
+
+//                                 {/* Overlay */}
+
+//                                 <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+
+//                                     <h3 className="text-xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+//                                         {project.title}
+//                                     </h3>
+
+//                                     <p className="text-[#a4ac86] text-[10px] uppercase tracking-[3px] mb-6">
+//                                         {project.category}
+//                                     </p>
+
+//                                     <a
+//                                         href={project.link}
+//                                         target="_blank"
+//                                         rel="noopener noreferrer"
+//                                         className="px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#a4ac86] hover:text-white transition-colors"
+//                                     >
+//                                         Live Demo
+//                                     </a>
+
+//                                 </div>
+
+//                             </m.div>
+
+//                         ))}
+
+//                     </div>
+
+
+//                     {/* View More */}
+
+//                     {projectData.length > displayCount && (
+
+//                         <div className="text-center mt-16">
+
+//                             <button
+//                                 onClick={() => setDisplayCount(prev => prev + 3)}
+//                                 className="text-black font-bold text-sm border-b-2 border-black pb-2 hover:text-[#a4ac86] hover:border-[#a4ac86] transition-all"
+//                             >
+//                                 VIEW ALL PROJECTS
+//                             </button>
+
+//                         </div>
+
+//                     )}
+
+//                 </div>
+
+//             </section>
+
+//         </LazyMotion>
+
+//     );
+// };
+
+// export default Projects;
+
+
+
+import React, { useState } from "react";
 
 const Projects = () => {
 
-    const [filter, setFilter] = useState('All');
     const [displayCount, setDisplayCount] = useState(6);
 
     const projectData = [
@@ -318,126 +612,80 @@ const Projects = () => {
         { title: "Recipe Finder", category: "API", image: "https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg", link: "https://recipe-nu-eight.vercel.app/" }
     ];
 
-    const categories = ['All', ...new Set(projectData.map(p => p.category))];
-
-    // Optimized filtering
-    const filteredProjects = useMemo(() => {
-        return filter === 'All'
-            ? projectData
-            : projectData.filter(p => p.category === filter);
-    }, [filter]);
-
     return (
-
-        <LazyMotion features={domAnimation}>
 
         <section id="projects" className="py-24 bg-[#fafafa]">
 
             <div className="container mx-auto px-6 max-w-7xl">
 
-                {/* Header Section */}
+                {/* Header */}
 
-                <div className="text-center mb-12">
+                <div className="text-center mb-16">
 
-                    <m.span
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block"
-                    >
+                    <span className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block">
                         Portfolio
-                    </m.span>
+                    </span>
 
                     <h2 className="text-5xl font-black text-black mb-6 tracking-tighter">
                         Featured Works
                     </h2>
-
-
-                    {/* Filter Tabs */}
-
-                    <div className="flex flex-wrap justify-center gap-4 mt-8">
-
-                        {categories.map((cat) => (
-
-                            <button
-                                key={cat}
-                                onClick={() => {
-                                    setFilter(cat);
-                                    setDisplayCount(6);
-                                }}
-                                className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
-                                    filter === cat
-                                        ? 'bg-black text-white border-black'
-                                        : 'bg-transparent text-gray-400 border-gray-200 hover:border-black hover:text-black'
-                                }`}
-                            >
-                                {cat}
-                            </button>
-
-                        ))}
-
-                    </div>
-
+                    <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                        A curated collection of digital experiences crafted with a blend of modern aesthetics and functional code. Each project reflects a commitment to quality, innovation, and user-centric design.
+                    </p>
                 </div>
 
 
                 {/* Grid */}
 
-                <m.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                    <AnimatePresence mode="popLayout">
+                    {projectData.slice(0, displayCount).map((project) => (
 
-                        {filteredProjects.slice(0, displayCount).map((project) => (
+                        <div
+                            key={project.title}
+                            className="relative group overflow-hidden rounded-xl bg-white shadow-sm aspect-[4/3]"
+                        >
 
-                            <m.div
-                                key={project.title}
-                                layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.4 }}
-                                className="relative group overflow-hidden rounded-xl bg-white shadow-sm aspect-[4/3]"
-                            >
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                loading="lazy"
+                                className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 will-change-transform"
+                            />
 
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                                />
+                            {/* Overlay */}
 
-                                <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400 backdrop-blur-sm">
+                            <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 
-                                    <h3 className="text-xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform">
-                                        {project.title}
-                                    </h3>
+                                <h3 className="text-xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    {project.title}
+                                </h3>
 
-                                    <p className="text-[#a4ac86] text-[10px] uppercase tracking-[3px] mb-6">
-                                        {project.category}
-                                    </p>
+                                <p className="text-[#a4ac86] text-[10px] uppercase tracking-[3px] mb-6">
+                                    {project.category}
+                                </p>
 
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#a4ac86] hover:text-white transition-colors"
-                                    >
-                                        Live Demo
-                                    </a>
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#a4ac86] hover:text-white transition-colors"
+                                >
+                                    Live Demo
+                                </a>
 
-                                </div>
+                            </div>
 
-                            </m.div>
+                        </div>
 
-                        ))}
+                    ))}
 
-                    </AnimatePresence>
-
-                </m.div>
+                </div>
 
 
-                {/* View More Button */}
+                {/* View More */}
 
-                {filteredProjects.length > displayCount && (
+                {projectData.length > displayCount && (
 
                     <div className="text-center mt-16">
 
@@ -455,8 +703,6 @@ const Projects = () => {
             </div>
 
         </section>
-
-        </LazyMotion>
     );
 };
 
