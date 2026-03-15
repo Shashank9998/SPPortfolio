@@ -378,8 +378,235 @@
 // export default Navbar;
 
 
+// import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { Menu, X, Github, Linkedin, Download } from 'lucide-react';
+
+// const Navbar = () => {
+
+//     const [isOpen, setIsOpen] = useState(false);
+//     const [scrolled, setScrolled] = useState(false);
+
+//     useEffect(() => {
+
+//         const handleScroll = () => {
+//             setScrolled(window.scrollY > 50);
+//         };
+
+//         window.addEventListener('scroll', handleScroll);
+//         return () => window.removeEventListener('scroll', handleScroll);
+
+//     }, []);
+
+//     const navLinks = [
+//         { name: 'Home', id: 'home' },
+//         { name: 'About', id: 'about' },
+//         { name: 'Skills', id: 'skills' },
+//         { name: 'Education', id: 'education' },
+//         { name: 'Projects', id: 'projects' },
+//         { name: 'Contact', id: 'contact' },
+//     ];
+
+//     const scrollToSection = (id) => {
+
+//         const section = document.getElementById(id);
+
+//         if (section) {
+//             section.scrollIntoView({
+//                 behavior: "smooth"
+//             });
+//         }
+
+//     };
+
+//     return (
+
+//         <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled
+//             ? 'py-4 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100'
+//             : 'py-6 bg-transparent'
+//             }`}>
+
+//             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+//                 {/* Logo */}
+
+//                 <Link to="/" className="text-2xl font-black tracking-tighter flex items-center group">
+
+//                     <span className="text-black uppercase">
+//                         Shashank
+//                     </span>
+
+//                     {/* &nbsp; */}
+
+//                     <span className="text-[#82905b] font-black">
+//                         Patel
+//                     </span>
+
+//                 </Link>
+
+//                 {/* Desktop Menu */}
+
+//                 <div className="hidden md:flex items-center gap-10">
+
+//                     <div className="flex gap-8 text-[15px] uppercase tracking-[2px] font-extrabold text-gray-800">
+
+//                         {navLinks.map((link) => (
+//                             <button
+//                                 key={link.name}
+//                                 onClick={() => scrollToSection(link.id)}
+//                                 className="hover:text-[#82905b] transition-colors relative group"
+
+//                             >
+
+//                                 {link.name}
+
+//                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#82905b] transition-all group-hover:w-full" />
+
+//                             </button>
+//                         ))}
+
+//                     </div>
+
+//                     <div className="flex items-center gap-6 border-l border-gray-200 pl-8">
+
+//                         {/* Social Icons */}
+
+//                         <div className="flex gap-4 text-gray-500">
+
+//                             <a
+//                                 href="https://github.com/Shashank9998/"
+//                                 className="hover:text-[#82905b] transition-transform hover:-translate-y-1"
+
+//                             >
+
+//                                 <Github size={18} />
+//                             </a>
+
+//                             <a
+//                                 href="https://www.linkedin.com/in/shashankkumar-patel-63a333245/"
+//                                 className="hover:text-[#82905b] transition-transform hover:-translate-y-1"
+
+//                             >
+
+//                                 <Linkedin size={18} />
+//                             </a>
+
+//                         </div>
+
+//                         {/* Download CV */}
+
+//                         <motion.a
+//                             href="/resume.pdf"
+//                             download="Shashank_Patel_CV.pdf"
+//                             whileHover={{ scale: 1.02 }}
+//                             whileTap={{ scale: 0.98 }}
+//                             className="flex items-center gap-2 bg-[#82905b] text-white px-6 py-2.5 rounded-full text-[12px] uppercase tracking-widest font-black shadow-lg hover:shadow-[#82905b]/30 transition-all"
+
+//                         >
+
+//                             <Download size={14} />
+//                             <span>Download CV</span>
+
+//                         </motion.a>
+
+//                     </div>
+
+//                 </div>
+
+//                 {/* Mobile Menu Button */}
+
+//                 <button
+//                     className="md:hidden text-black p-2"
+//                     onClick={() => setIsOpen(!isOpen)}
+
+//                 >
+
+//                     {isOpen ? <X size={28} /> : <Menu size={28} />}
+
+//                 </button>
+
+//             </div>
+
+//             {/* Mobile Menu */}
+
+//             <AnimatePresence>
+
+//                 {isOpen && (
+
+//                     <motion.div
+//                         initial={{ opacity: 0, x: '100%' }}
+//                         animate={{ opacity: 1, x: 0 }}
+//                         exit={{ opacity: 0, x: '100%' }}
+//                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
+//                         className="fixed inset-0 bg-white z-[90] flex flex-col p-8 md:hidden"
+
+//                     >
+
+//                         <div className="flex justify-between items-center mb-16">
+
+//                             <span className="text-xl font-black uppercase tracking-widest text-[#82905b]">
+//                                 Menu
+//                             </span>
+
+//                             <button onClick={() => setIsOpen(false)}> <X size={32} /> </button>
+
+//                         </div>
+
+//                         <div className="flex flex-col gap-6">
+
+//                             {navLinks.map((link, i) => (
+//                                 <motion.button
+//                                     key={link.name}
+//                                     initial={{ x: 20, opacity: 0 }}
+//                                     animate={{ x: 0, opacity: 1 }}
+//                                     transition={{ delay: i * 0.1 }}
+//                                     onClick={() => {
+//                                         scrollToSection(link.id);
+//                                         setIsOpen(false);
+//                                     }}
+//                                     className="text-5xl font-black uppercase tracking-tight text-black hover:text-[#82905b]"
+//                                 >
+
+//                                     {link.name}
+
+//                                 </motion.button>
+//                             ))}
+
+//                         </div>
+
+//                         <div className="mt-auto">
+
+//                             <motion.a
+//                                 href="/resume.pdf"
+//                                 download
+//                                 className="flex items-center justify-center gap-3 bg-black text-white w-full py-5 rounded-xl text-lg font-bold uppercase tracking-widest"
+
+//                             >
+
+//                                 <Download size={20} />
+//                                 Resume
+
+//                             </motion.a>
+
+//                         </div>
+
+//                     </motion.div>
+
+//                 )}
+
+//             </AnimatePresence>
+
+//         </nav>
+
+//     );
+
+// };
+
+// export default Navbar;
+
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Download } from 'lucide-react';
 
@@ -431,19 +658,20 @@ const Navbar = () => {
 
                 {/* Logo */}
 
-                <Link to="/" className="text-2xl font-black tracking-tighter flex items-center group">
+                <button
+                    onClick={() => scrollToSection("home")}
+                    className="text-2xl font-black tracking-tighter flex items-center group"
+                >
 
                     <span className="text-black uppercase">
                         Shashank
                     </span>
 
-                    {/* &nbsp; */}
-
                     <span className="text-[#82905b] font-black">
                         Patel
                     </span>
 
-                </Link>
+                </button>
 
                 {/* Desktop Menu */}
 
@@ -456,7 +684,6 @@ const Navbar = () => {
                                 key={link.name}
                                 onClick={() => scrollToSection(link.id)}
                                 className="hover:text-[#82905b] transition-colors relative group"
-
                             >
 
                                 {link.name}
@@ -476,20 +703,24 @@ const Navbar = () => {
 
                             <a
                                 href="https://github.com/Shashank9998/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="hover:text-[#82905b] transition-transform hover:-translate-y-1"
-
                             >
 
                                 <Github size={18} />
+
                             </a>
 
                             <a
                                 href="https://www.linkedin.com/in/shashankkumar-patel-63a333245/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="hover:text-[#82905b] transition-transform hover:-translate-y-1"
-
                             >
 
                                 <Linkedin size={18} />
+
                             </a>
 
                         </div>
@@ -502,7 +733,6 @@ const Navbar = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="flex items-center gap-2 bg-[#82905b] text-white px-6 py-2.5 rounded-full text-[12px] uppercase tracking-widest font-black shadow-lg hover:shadow-[#82905b]/30 transition-all"
-
                         >
 
                             <Download size={14} />
@@ -519,7 +749,6 @@ const Navbar = () => {
                 <button
                     className="md:hidden text-black p-2"
                     onClick={() => setIsOpen(!isOpen)}
-
                 >
 
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -530,7 +759,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
 
-            <AnimatePresence>
+            {/* <AnimatePresence>
 
                 {isOpen && (
 
@@ -540,7 +769,6 @@ const Navbar = () => {
                         exit={{ opacity: 0, x: '100%' }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         className="fixed inset-0 bg-white z-[90] flex flex-col p-8 md:hidden"
-
                     >
 
                         <div className="flex justify-between items-center mb-16">
@@ -549,7 +777,9 @@ const Navbar = () => {
                                 Menu
                             </span>
 
-                            <button onClick={() => setIsOpen(false)}> <X size={32} /> </button>
+                            <button onClick={() => setIsOpen(false)}>
+                                <X size={32} />
+                            </button>
 
                         </div>
 
@@ -581,7 +811,6 @@ const Navbar = () => {
                                 href="/resume.pdf"
                                 download
                                 className="flex items-center justify-center gap-3 bg-black text-white w-full py-5 rounded-xl text-lg font-bold uppercase tracking-widest"
-
                             >
 
                                 <Download size={20} />
@@ -595,7 +824,210 @@ const Navbar = () => {
 
                 )}
 
-            </AnimatePresence>
+            </AnimatePresence> */}
+
+            {/* <AnimatePresence mode="wait">
+                {isOpen && (
+                    <motion.div
+                        initial={{ x: '100%', opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: '100%', opacity: 0 }}
+                        transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                        // Full screen fixed positioning
+                        className="fixed inset-0 w-full h-screen bg-white z-[999] flex flex-col md:hidden overflow-hidden"
+                    >
+                        <div className="flex justify-between items-center px-8 py-6 border-b border-gray-50">
+                            <span className="text-xs font-black uppercase tracking-[4px] text-[#82905b]">
+                                Navigation
+                            </span>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-black active:scale-90 transition-transform"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className="flex flex-col justify-center flex-grow px-10">
+                            <nav className="flex flex-col gap-4">
+                                {navLinks.map((link, i) => (
+                                    <motion.div
+                                        key={link.name}
+                                        initial={{ x: 30, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.1 + i * 0.1 }}
+                                    >
+                                        <button
+                                            onClick={() => {
+                                                setIsOpen(false);
+                                                setTimeout(() => scrollToSection(link.id), 300);
+                                            }}
+                                            className="group flex items-baseline gap-4 w-full text-left"
+                                        >
+                                            <span className="text-sm font-bold text-gray-300 group-hover:text-[#82905b] transition-colors italic">
+                                                0{i + 1}
+                                            </span>
+                                            <div className="relative overflow-hidden">
+                                                <span className="text-5xl font-black uppercase tracking-tighter text-black group-hover:text-[#82905b] transition-colors duration-300 block">
+                                                    {link.name}
+                                                </span>
+                                                <motion.span
+                                                    className="absolute bottom-0 left-0 h-1 bg-[#82905b] rounded-full"
+                                                    initial={{ width: 0 }}
+                                                    whileHover={{ width: '100%' }}
+                                                />
+                                            </div>
+                                        </button>
+                                    </motion.div>
+                                ))}
+                            </nav>
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="p-8 bg-gray-50/50 backdrop-blur-md"
+                        >
+                            <div className="flex gap-6 mb-6 justify-center">
+                                <a href="https://github.com/Shashank9998/" target="_blank" className="p-3 bg-white rounded-full shadow-sm hover:text-[#82905b] transition-colors"><Github size={20} /></a>
+                                <a href="https://www.linkedin.com/in/shashankkumar-patel-63a333245/" target="_blank" className="p-3 bg-white rounded-full shadow-sm hover:text-[#82905b] transition-colors"><Linkedin size={20} /></a>
+                            </div>
+
+                            <motion.a
+                                href="/resume.pdf"
+                                download
+                                whileTap={{ scale: 0.97 }}
+                                className="flex items-center justify-center gap-3 bg-black text-white w-full py-5 rounded-2xl text-[11px] font-black uppercase tracking-[2px] shadow-lg"
+                            >
+                                <Download size={18} className="text-[#82905b]" />
+                                <span>Download CV</span>
+                            </motion.a>
+                        </motion.div>
+
+                        <div className="absolute top-1/2 -right-12 text-[18vh] font-black text-black/[0.02] select-none pointer-events-none leading-none -rotate-90 origin-center -translate-y-1/2">
+                            SHASHANK
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence> */}
+
+            <AnimatePresence mode="wait">
+  {isOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ type: "spring", damping: 25, stiffness: 200 }}
+      className="fixed inset-0 w-full h-screen bg-white z-[999] flex flex-col md:hidden overflow-hidden"
+    >
+      {/* --- Top Bar --- */}
+      <div className="flex justify-between items-center px-8 py-6 border-b border-gray-50">
+        <motion.span 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          className="text-[10px] font-black uppercase tracking-[5px] text-[#82905b]"
+        >
+          Navigation
+        </motion.span>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-50 text-black active:scale-75 transition-all duration-300"
+        >
+          <X size={24} />
+        </button>
+      </div>
+
+      {/* --- Main Navigation Links --- */}
+      <div className="flex flex-col justify-center flex-grow px-10 relative">
+        <nav className="flex flex-col gap-2">
+          {navLinks.map((link, i) => (
+            <motion.div
+              key={link.name}
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.1 + i * 0.1, ease: "easeOut" }}
+            >
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setTimeout(() => scrollToSection(link.id), 400);
+                }}
+                className="group relative flex items-center gap-6 w-full text-left py-3"
+              >
+                {/* Number Index */}
+                <span className="text-xs font-black text-gray-200 group-hover:text-[#82905b] transition-colors duration-300">
+                  0{i + 1}
+                </span>
+
+                <div className="relative overflow-hidden">
+                  {/* Link Text with Magnetic-like Shift */}
+                  <span className="text-6xl font-black uppercase tracking-tighter text-black group-hover:text-[#82905b] transition-all duration-500 block group-hover:translate-x-4">
+                    {link.name}
+                  </span>
+                  
+                  {/* Theme Colored underline that expands from left */}
+                  <motion.span 
+                    className="absolute bottom-1 left-0 h-1.5 bg-[#82905b] rounded-full"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: '100%' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+
+                {/* Arrow that appears on Hover */}
+                <ArrowRight 
+                  className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#82905b]" 
+                  size={32} 
+                />
+              </button>
+            </motion.div>
+          ))}
+        </nav>
+      </div>
+
+      {/* --- Footer Section --- */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="p-8 bg-gray-50/50 backdrop-blur-xl border-t border-gray-100"
+      >
+        <div className="flex gap-4 mb-8 justify-center">
+          {[
+            { icon: <Github size={20} />, href: "https://github.com/Shashank9998/" },
+            { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/shashankkumar-patel-63a333245/" }
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.href}
+              target="_blank"
+              className="w-14 h-14 flex items-center justify-center bg-white border border-gray-100 rounded-2xl text-black hover:bg-[#82905b] hover:text-white hover:-translate-y-2 transition-all duration-300 shadow-sm"
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
+
+        <motion.a
+          href="/resume.pdf"
+          download
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex items-center justify-center gap-3 bg-black text-white w-full py-6 rounded-2xl text-[12px] font-black uppercase tracking-[4px] shadow-2xl shadow-black/20"
+        >
+          <Download size={18} className="text-[#82905b]" />
+          Resume
+        </motion.a>
+      </motion.div>
+
+      {/* --- Large Background Decorative Text --- */}
+      <div className="absolute -bottom-10 -left-10 text-[20vh] font-black text-black/[0.03] select-none pointer-events-none leading-none z-[-1]">
+        PATEL
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
         </nav>
 
