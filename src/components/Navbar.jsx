@@ -608,7 +608,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Download } from 'lucide-react';
+// import { Menu, X, Github, Linkedin, Download } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Download, ArrowRight } from 'lucide-react';
 
 const Navbar = () => {
 
@@ -913,122 +914,104 @@ const Navbar = () => {
             </AnimatePresence> */}
 
             <AnimatePresence mode="wait">
-  {isOpen && (
-    <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "100%" }}
-      transition={{ type: "spring", damping: 25, stiffness: 200 }}
-      className="fixed inset-0 w-full h-screen bg-white z-[999] flex flex-col md:hidden overflow-hidden"
-    >
-      {/* --- Top Bar --- */}
-      <div className="flex justify-between items-center px-8 py-6 border-b border-gray-50">
-        <motion.span 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          className="text-[10px] font-black uppercase tracking-[5px] text-[#82905b]"
-        >
-          Navigation
-        </motion.span>
-        <button
-          onClick={() => setIsOpen(false)}
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-50 text-black active:scale-75 transition-all duration-300"
-        >
-          <X size={24} />
-        </button>
-      </div>
+                {isOpen && (
+                    <motion.div
+                        initial={{ x: "100%", opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: "100%", opacity: 0 }}
+                        transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                        className="fixed inset-0 w-full h-screen bg-white z-[999] flex flex-col md:hidden overflow-hidden"
+                    >
+                        {/* Top Bar - Navigation Label & Close Button */}
+                        <div className="flex justify-between items-center px-8 py-6 border-b border-gray-50">
+                            <span className="text-[10px] font-black uppercase tracking-[5px] text-[#82905b]">
+                                Navigation
+                            </span>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-50 text-black active:scale-75 transition-all duration-300 shadow-sm"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
 
-      {/* --- Main Navigation Links --- */}
-      <div className="flex flex-col justify-center flex-grow px-10 relative">
-        <nav className="flex flex-col gap-2">
-          {navLinks.map((link, i) => (
-            <motion.div
-              key={link.name}
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.1 + i * 0.1, ease: "easeOut" }}
-            >
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setTimeout(() => scrollToSection(link.id), 400);
-                }}
-                className="group relative flex items-center gap-6 w-full text-left py-3"
-              >
-                {/* Number Index */}
-                <span className="text-xs font-black text-gray-200 group-hover:text-[#82905b] transition-colors duration-300">
-                  0{i + 1}
-                </span>
+                        {/* Navigation Links - All sections with same luxury hover effect */}
+                        <div className="flex flex-col justify-center flex-grow px-10">
+                            <nav className="flex flex-col gap-2">
+                                {navLinks.map((link, i) => (
+                                    <motion.div
+                                        key={link.name}
+                                        initial={{ x: 50, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.1 + i * 0.1 }}
+                                    >
+                                        <button
+                                            onClick={() => {
+                                                setIsOpen(false);
+                                                setTimeout(() => scrollToSection(link.id), 400);
+                                            }}
+                                            className="group relative flex items-center gap-6 w-full text-left py-3 transition-all duration-500"
+                                        >
+                                            {/* 01, 02 Numbers - Theme Green on Hover */}
+                                            <span className="text-xs font-black text-gray-200 group-hover:text-[#82905b] transition-colors duration-300 italic">
+                                                0{i + 1}
+                                            </span>
 
-                <div className="relative overflow-hidden">
-                  {/* Link Text with Magnetic-like Shift */}
-                  <span className="text-6xl font-black uppercase tracking-tighter text-black group-hover:text-[#82905b] transition-all duration-500 block group-hover:translate-x-4">
-                    {link.name}
-                  </span>
-                  
-                  {/* Theme Colored underline that expands from left */}
-                  <motion.span 
-                    className="absolute bottom-1 left-0 h-1.5 bg-[#82905b] rounded-full"
-                    initial={{ width: 0 }}
-                    whileHover={{ width: '100%' }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
+                                            <div className="relative">
+                                                {/* Link Text - Black to Green + Horizontal Shift */}
+                                                <span className="text-5xl font-black uppercase tracking-tighter text-black group-hover:text-[#82905b] transition-all duration-500 block group-hover:translate-x-4">
+                                                    {link.name}
+                                                </span>
 
-                {/* Arrow that appears on Hover */}
-                <ArrowRight 
-                  className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#82905b]" 
-                  size={32} 
-                />
-              </button>
-            </motion.div>
-          ))}
-        </nav>
-      </div>
+                                                {/* Animated Thick Underline */}
+                                                <span className="absolute -bottom-1 left-0 w-0 h-1.5 bg-[#82905b] group-hover:w-full transition-all duration-500 ease-in-out" />
+                                            </div>
 
-      {/* --- Footer Section --- */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="p-8 bg-gray-50/50 backdrop-blur-xl border-t border-gray-100"
-      >
-        <div className="flex gap-4 mb-8 justify-center">
-          {[
-            { icon: <Github size={20} />, href: "https://github.com/Shashank9998/" },
-            { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/shashankkumar-patel-63a333245/" }
-          ].map((social, index) => (
-            <a
-              key={index}
-              href={social.href}
-              target="_blank"
-              className="w-14 h-14 flex items-center justify-center bg-white border border-gray-100 rounded-2xl text-black hover:bg-[#82905b] hover:text-white hover:-translate-y-2 transition-all duration-300 shadow-sm"
-            >
-              {social.icon}
-            </a>
-          ))}
-        </div>
+                                            {/* Arrow Icon Appearance */}
+                                            <ArrowRight
+                                                className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-[#82905b]"
+                                                size={32}
+                                            />
+                                        </button>
+                                    </motion.div>
+                                ))}
+                            </nav>
+                        </div>
 
-        <motion.a
-          href="/resume.pdf"
-          download
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center justify-center gap-3 bg-black text-white w-full py-6 rounded-2xl text-[12px] font-black uppercase tracking-[4px] shadow-2xl shadow-black/20"
-        >
-          <Download size={18} className="text-[#82905b]" />
-          Resume
-        </motion.a>
-      </motion.div>
+                        {/* Footer Section - Socials & Resume */}
+                        <motion.div
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                            className="p-8 bg-gray-50/50 backdrop-blur-xl border-t border-gray-100"
+                        >
+                            <div className="flex gap-4 mb-8 justify-center">
+                                <a href="https://github.com/Shashank9998/" target="_blank" className="w-14 h-14 flex items-center justify-center bg-white border border-gray-100 rounded-2xl text-black hover:bg-[#82905b] hover:text-white transition-all duration-300 shadow-sm hover:-translate-y-2">
+                                    <Github size={20} />
+                                </a>
+                                <a href="https://www.linkedin.com/in/shashankkumar-patel-63a333245/" target="_blank" className="w-14 h-14 flex items-center justify-center bg-white border border-gray-100 rounded-2xl text-black hover:bg-[#82905b] hover:text-white transition-all duration-300 shadow-sm hover:-translate-y-2">
+                                    <Linkedin size={20} />
+                                </a>
+                            </div>
 
-      {/* --- Large Background Decorative Text --- */}
-      <div className="absolute -bottom-10 -left-10 text-[20vh] font-black text-black/[0.03] select-none pointer-events-none leading-none z-[-1]">
-        PATEL
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                            <motion.a
+                                href="/resume.pdf"
+                                download
+                                whileTap={{ scale: 0.98 }}
+                                className="flex items-center justify-center gap-3 bg-black text-white w-full py-6 rounded-2xl text-[12px] font-black uppercase tracking-[4px] shadow-xl hover:bg-[#82905b] transition-colors duration-300"
+                            >
+                                <Download size={18} />
+                                <span>Resume</span>
+                            </motion.a>
+                        </motion.div>
 
+                        {/* Background Decorative Text */}
+                        <div className="absolute top-1/2 -right-12 text-[18vh] font-black text-black/[0.02] select-none pointer-events-none leading-none -rotate-90 origin-center -translate-y-1/2">
+                            SHASHANK
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
 
     );
