@@ -145,10 +145,131 @@
 
 // export default Skills;
 
-import React from 'react';
+// import React from 'react';
+// import { motion } from 'framer-motion';
+
+// const Skills = () => {
+//   const frontendSkills = [
+//     { name: "HTML5", percentage: 98 },
+//     { name: "CSS3", percentage: 95 },
+//     { name: "JavaScript", percentage: 85 },
+//     { name: "ReactJS", percentage: 88 },
+//     { name: "Bootstrap", percentage: 90 },
+//     { name: "Tailwind CSS", percentage: 92 },
+//   ];
+
+//   const backendSkills = [
+//     { name: "PHP", percentage: 82 },
+//     { name: "Python", percentage: 70 },
+//     { name: "Node.js", percentage: 75 },
+//     { name: "MySQL", percentage: 98 },
+//     { name: "C++", percentage: 75 },
+//     { name: "C Language", percentage: 80 },
+//   ];
+
+  
+//   const animationSkills = [
+//     { name: "Framer Motion", percentage: 82 },
+//     { name: "Three.js", percentage: 70 },
+//     { name: "GSAP", percentage: 75 },
+//   ];
+
+//   const SkillCard = ({ skill, index }) => (
+//     <motion.div
+//       initial={{ opacity: 0, y: 20 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       viewport={{ once: true }}
+//       transition={{ delay: index * 0.1 }}
+//       className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-[#a4ac86]/10 transition-all duration-500"
+//     >
+//       <div className="flex justify-between items-end mb-4">
+//         <h3 className="text-lg font-black text-black tracking-tight">{skill.name}</h3>
+//         <span className="text-[#a4ac86] font-black text-sm">{skill.percentage}%</span>
+//       </div>
+
+//       {/* Modern Progress Bar */}
+//       <div className="h-2 w-full bg-[#f4f5f0] rounded-full overflow-hidden">
+//         <motion.div
+//           initial={{ width: 0 }}
+//           whileInView={{ width: `${skill.percentage}%` }}
+//           transition={{ duration: 1.5, ease: "easeOut" }}
+//           className="h-full bg-[#a4ac86] relative"
+//         >
+//           {/* Subtle Glow on Progress Head */}
+//           <div className="absolute right-0 top-0 h-full w-2 bg-white/30 blur-[2px]" />
+//         </motion.div>
+//       </div>
+//     </motion.div>
+//   );
+
+//   return (
+//     <section id="skills" className="py-28 bg-[#fcfcfc]">
+//       <div className="container mx-auto px-6 max-w-7xl">
+        
+//         {/* Section Header */}
+//         <div className="text-center mb-24">
+//           <span className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block">
+//             Technical Expertise
+//           </span>
+//           <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tighter">My Skills</h2>
+//           <div className="w-20 h-1 bg-[#a4ac86] mx-auto mb-6" />
+//         </div>
+
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          
+//           {/* Frontend Column */}
+//           <div>
+//             <div className="flex items-center gap-4 mb-10">
+//               <h3 className="text-2xl font-black uppercase tracking-widest text-black">Frontend</h3>
+//               <div className="h-[1px] flex-grow bg-gray-100" />
+//             </div>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               {frontendSkills.map((skill, index) => (
+//                 <SkillCard key={index} skill={skill} index={index} />
+//               ))}
+//             </div>
+//           </div>
+
+//           {/* Backend Column */}
+//           <div>
+//             <div className="flex items-center gap-4 mb-10">
+//               <h3 className="text-2xl font-black uppercase tracking-widest text-black">Backend</h3>
+//               <div className="h-[1px] flex-grow bg-gray-100" />
+//             </div>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               {backendSkills.map((skill, index) => (
+//                 <SkillCard key={index} skill={skill} index={index} />
+//               ))}
+//             </div>
+//           </div>
+
+//           <div>
+//             <div className="flex items-center gap-4 mb-10">
+//               <h3 className="text-2xl font-black uppercase tracking-widest text-black">Animation & 3D</h3>
+//               <div className="h-[1px] flex-grow bg-gray-100" />
+//             </div>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               {animationSkills.map((skill, index) => (
+//                 <SkillCard key={index} skill={skill} index={index} />
+//               ))}
+//             </div>
+//           </div>
+
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Skills;
+
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Skills = () => {
+
+  const [showAll, setShowAll] = useState(false);
+
   const frontendSkills = [
     { name: "HTML5", percentage: 98 },
     { name: "CSS3", percentage: 95 },
@@ -167,6 +288,12 @@ const Skills = () => {
     { name: "C Language", percentage: 80 },
   ];
 
+  const animationSkills = [
+    { name: "Framer Motion", percentage: 82 },
+    { name: "Three.js", percentage: 70 },
+    { name: "GSAP", percentage: 75 },
+  ];
+
   const SkillCard = ({ skill, index }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -180,7 +307,6 @@ const Skills = () => {
         <span className="text-[#a4ac86] font-black text-sm">{skill.percentage}%</span>
       </div>
 
-      {/* Modern Progress Bar */}
       <div className="h-2 w-full bg-[#f4f5f0] rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
@@ -188,7 +314,6 @@ const Skills = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="h-full bg-[#a4ac86] relative"
         >
-          {/* Subtle Glow on Progress Head */}
           <div className="absolute right-0 top-0 h-full w-2 bg-white/30 blur-[2px]" />
         </motion.div>
       </div>
@@ -198,45 +323,72 @@ const Skills = () => {
   return (
     <section id="skills" className="py-28 bg-[#fcfcfc]">
       <div className="container mx-auto px-6 max-w-7xl">
-        
-        {/* Section Header */}
+
         <div className="text-center mb-24">
           <span className="text-[#a4ac86] uppercase tracking-[6px] font-bold text-[10px] mb-4 block">
             Technical Expertise
           </span>
-          <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tighter">My Skills</h2>
+          <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tighter">
+            My Skills
+          </h2>
           <div className="w-20 h-1 bg-[#a4ac86] mx-auto mb-6" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          
-          {/* Frontend Column */}
+
+          {/* Frontend */}
           <div>
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-2xl font-black uppercase tracking-widest text-black">Frontend</h3>
-              <div className="h-[1px] flex-grow bg-gray-100" />
-            </div>
+            <h3 className="text-2xl font-black uppercase tracking-widest text-black mb-10">
+              Frontend
+            </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {frontendSkills.map((skill, index) => (
+              {(showAll ? frontendSkills : frontendSkills.slice(0,3)).map((skill, index) => (
                 <SkillCard key={index} skill={skill} index={index} />
               ))}
             </div>
           </div>
 
-          {/* Backend Column */}
+          {/* Backend */}
           <div>
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-2xl font-black uppercase tracking-widest text-black">Backend</h3>
-              <div className="h-[1px] flex-grow bg-gray-100" />
-            </div>
+            <h3 className="text-2xl font-black uppercase tracking-widest text-black mb-10">
+              Backend
+            </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {backendSkills.map((skill, index) => (
+              {(showAll ? backendSkills : backendSkills.slice(0,3)).map((skill, index) => (
                 <SkillCard key={index} skill={skill} index={index} />
               ))}
             </div>
           </div>
 
         </div>
+
+        {/* Animation Skills */}
+        {showAll && (
+          <div className="mt-20">
+            <h3 className="text-2xl font-black uppercase tracking-widest text-black mb-10">
+              Animation & 3D
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {animationSkills.map((skill, index) => (
+                <SkillCard key={index} skill={skill} index={index} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* View Skills Button */}
+        <div className="text-center mt-20">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-10 py-4 bg-[#a4ac86] text-white font-bold tracking-widest rounded-full hover:bg-black transition duration-300"
+          >
+            {showAll ? "Hide Skills" : "View Skills"}
+          </button>
+        </div>
+
       </div>
     </section>
   );
