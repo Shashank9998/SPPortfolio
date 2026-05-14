@@ -168,7 +168,7 @@ const CustomCursor = () => {
           scale: 2.2, 
           backgroundColor: "rgba(164, 172, 134, 0.15)", 
           borderWidth: "0px",
-          duration: 0.3 
+          duration: 0.15
         });
         // Inner dot shrinks (or disappears) for a cleaner look on links
         gsap.to(dotRef.current, { scale: 0, opacity: 0, duration: 0.2 });
