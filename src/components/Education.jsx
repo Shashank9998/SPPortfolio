@@ -59,13 +59,7 @@ const Education = () => {
       location: "Ahmedabad, India",
       description: "Gained core knowledge in programming languages like C, C++, Java, and Database Management Systems."
     },
-    // {
-    //   degree: "Higher Secondary Education (HSC)",
-    //   institute: "Gujarat Secondary Education Board",
-    //   duration: "2016 - 2018",
-    //   location: "Ahmedabad, Gujarat",
-    //   description: "Completed schooling with a focus on Mathematics and Computer Science."
-    // }
+    
   ];
 
   return (

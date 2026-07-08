@@ -52,11 +52,13 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { LenisContext } from './SmoothScroll';
 
 const ScrollToTop = () => {
+  const lenis = useContext(LenisContext);
   const [isVisible, setIsVisible] = useState(false);
   
   // Framer Motion scroll logic
@@ -76,7 +78,11 @@ const ScrollToTop = () => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {

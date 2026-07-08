@@ -606,13 +606,16 @@
 // export default Navbar;
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // import { Menu, X, Github, Linkedin, Download } from 'lucide-react';
 import { Menu, X, Github, Linkedin, Download, ArrowRight } from 'lucide-react';
+import { LenisContext } from './SmoothScroll';
+import CV from '../assets/Shashankkumar_CV.pdf';
 
 const Navbar = () => {
 
+    const lenis = useContext(LenisContext);
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -628,7 +631,7 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', id: 'home' },
+        // { name: 'Home', id: 'home' },
         { name: 'About', id: 'about' },
         { name: 'Skills', id: 'skills' },
         { name: 'Education', id: 'education' },
@@ -637,15 +640,17 @@ const Navbar = () => {
     ];
 
     const scrollToSection = (id) => {
-
         const section = document.getElementById(id);
 
-        if (section) {
+        if (!section) return;
+
+        if (lenis?.scrollTo) {
+            lenis.scrollTo(section);
+        } else {
             section.scrollIntoView({
-                behavior: "smooth"
+                behavior: 'smooth',
             });
         }
-
     };
 
     return (
@@ -729,8 +734,8 @@ const Navbar = () => {
                         {/* Download CV */}
 
                         <motion.a
-                            href="/resume.pdf"
-                            download="Shashank_Patel_CV.pdf"
+                            href={CV}
+                            download="Shashankkumar_CV.pdf"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="flex items-center gap-2 bg-[#82905b] text-white px-6 py-2.5 rounded-full text-[12px] uppercase tracking-widest font-black shadow-lg hover:shadow-[#82905b]/30 transition-all"
@@ -809,7 +814,7 @@ const Navbar = () => {
                         <div className="mt-auto">
 
                             <motion.a
-                                href="/resume.pdf"
+                                href={CV}
                                 download
                                 className="flex items-center justify-center gap-3 bg-black text-white w-full py-5 rounded-xl text-lg font-bold uppercase tracking-widest"
                             >
@@ -922,7 +927,7 @@ const Navbar = () => {
                         transition={{ type: "spring", damping: 30, stiffness: 300 }}
                         className="fixed inset-0 w-full h-screen bg-white z-[999] flex flex-col md:hidden overflow-hidden"
                     >
-                        {/* Top Bar - Navigation Label & Close Button */}
+                        {/* Top Bar - Navigation Label & Controls */}
                         <div className="flex justify-between items-center px-8 py-6 border-b border-gray-50">
                             <span className="text-[10px] font-black uppercase tracking-[5px] text-[#82905b]">
                                 Navigation
@@ -995,7 +1000,7 @@ const Navbar = () => {
                             </div>
 
                             <motion.a
-                                href="/resume.pdf"
+                                href={CV}
                                 download
                                 whileTap={{ scale: 0.98 }}
                                 className="flex items-center justify-center gap-3 bg-black text-white w-full py-6 rounded-2xl text-[12px] font-black uppercase tracking-[4px] shadow-xl hover:bg-[#82905b] transition-colors duration-300"

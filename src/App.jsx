@@ -85,7 +85,8 @@ import CustomCursor from './components/CustomCursor';
 // import Background3D from './components/Background3D';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
-import SmoothScroll from './components/SmoothScroll';
+
+// import SmoothScroll from './components/SmoothScroll';
 // import { Contact } from 'lucide-react';
 
 // Home Page Sections (Lazy Loaded for Speed)
@@ -115,7 +116,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 2 સેકન્ડ પછી લોડર બંધ થશે
+    // 2 સેકન્ડ પછી લોડર બંધશે
     setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -125,17 +126,15 @@ function App() {
 
   return (
     <Router>
-      {/* Selection color and Dark Background */}
-      {/* <div className="relative bg-[#030712] text-white selection:bg-blue-500/30 overflow-x-hidden min-h-screen"> */}
-      <div>
-        <SmoothScroll>
+      <div className="relative bg-white text-slate-900 selection:bg-blue-500/30 overflow-x-hidden min-h-screen">
+        {/* <SmoothScroll> */}
 
         {/* Persistent UI elements */}
         <CustomCursor />
         
         {/* Background Layer */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <Suspense fallback={<div className="bg-[#030712] h-screen w-full" />}>
+          <Suspense fallback={<div className="bg-white h-screen w-full" />}>
             {/* <Background3D /> */}
           </Suspense>
         </div>
@@ -154,7 +153,7 @@ function App() {
           </Routes>
         </main>
         <ScrollToTop />
-        </SmoothScroll>
+        {/* </SmoothScroll> */}
       </div>
     </Router>
   );

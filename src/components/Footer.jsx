@@ -197,9 +197,10 @@
 
 // export default Footer;
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Github, Linkedin, Heart, Mail, Phone, MapPin } from 'lucide-react';
+import { LenisContext } from './SmoothScroll';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -211,14 +212,26 @@ const Footer = () => {
     { icon: <Linkedin size={18} />, url: "https://www.linkedin.com/in/shashankkumar-patel-63a333245/" },
   ];
 
+  const lenis = useContext(LenisContext);
+
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Education", href: "#education" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Skills', id: 'skills' },
+    { name: 'Education', id: 'education' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Contact', id: 'contact' },
   ];
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(section);
+    } else {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="bg-[#1a1a1a] pt-24 pb-12 text-white">
@@ -255,13 +268,13 @@ const Footer = () => {
             <ul className="space-y-4">
               {navLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <button
+                    onClick={() => scrollToSection(link.id)}
                     className="text-gray-400 hover:text-[#a4ac86] transition-all font-medium text-[15px] flex items-center gap-3 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#a4ac86] opacity-0 group-hover:opacity-100 transition-all"></span>
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

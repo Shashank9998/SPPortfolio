@@ -104,6 +104,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Img from "../assets/SP.png";
+import CV from '../assets/Shashankkumar_CV.pdf';
 
 const Hero = () => {
   return (
@@ -166,8 +167,8 @@ const Hero = () => {
 
             {/* Download CV Link */}
             <a
-              href="/path-to-your-cv.pdf"
-              download="My_CV.pdf"
+              href={CV}
+              download="Shashankkumar_CV.pdf"
               className="border-2 border-[#82905b] text-[#82905b] px-8 py-3 rounded-full font-bold hover:bg-[#82905b] hover:text-white transition-all text-center"
             >
               Download CV
